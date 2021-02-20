@@ -1,7 +1,28 @@
-import React from 'react';
+import React from 'react'
+import Accordion from './components/accordion';
 
-/* Define a functional component now with redux and hooks */
+const items =[
+  {
+    title:'What is React?',
+    content: 'React is a front end javascript framework'
+  },
+  {
+    title: 'Why use React?',
+    content: 'React is a favorite JS library among engineers'
+  },
+  {
+    title:'How do you use React?',
+    content: 'You use React by creating components'
+  }
+]
 
-export default () => {
-  return <h1>Widgets App</h1>;
-};
+const App = () => {
+  return (
+    <div>
+      <br />
+      <Accordion items={items} />
+    </div>
+  )
+}
+
+export default App
