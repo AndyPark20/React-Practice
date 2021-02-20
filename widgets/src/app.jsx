@@ -20,9 +20,11 @@ const App = () => {
   return (
     <div>
       <br />
-      <Accordion items={items} />
+      <Accordion items ={items} />
     </div>
   )
 }
+
+
 
 export default App
