@@ -7,8 +7,10 @@ const Dropdown = ({ options, selected, onSetChange }) => {
 
 
   useEffect(() => {
+    console.log('AFTER RENDER', open)
     document.body.addEventListener('click', (event) => {
       if (ref.current && ref.current.contains(event.target)) {
+        console.log('ELEMENT', open)
         return
       }
       setOpen(false)
@@ -18,6 +20,7 @@ const Dropdown = ({ options, selected, onSetChange }) => {
 
 
   const toggle = () => {
+    console.log('toggle!',open)
     if (open) {
       setOpen(false)
     } else {
@@ -46,7 +49,6 @@ const Dropdown = ({ options, selected, onSetChange }) => {
       return 'visible transition'
     }
   }
-  console.log(ref.current)
   return (
     <div ref={ref} className="ui form">
       <div onClick={() => toggle()} className="field">
