@@ -39,25 +39,3 @@ const [valueShow,setShow] = useState("")
 }
 
 export default Accordion
-
-// render() {
-//   return (
-//     <div className="container" onClick={this.handleChange}>
-//       <div className="row">
-//         {this.props.programming.map(values => {
-//           let hide = ''
-//           if (this.state.view === values.id) {
-//             hide = '';
-//           } else {
-//             hide = 'hidden';
-//           }
-//           return (<div className="column">
-//             <h3 className="cursor" key={values.id} data-view={values.id}>{values.title}</h3>
-//             <h4 className={hide}>{values.information}</h4>
-//           </div>)
-//         })}
-//       </div>
-//     </div>
-//   );
-// }
-// }
