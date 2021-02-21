@@ -25,7 +25,7 @@ JavaScript is high-level, often just-in-time compiled, and multi-paradigm.`
 
 const options = [
 {
-  label:'The color Red',
+  label:'The Color Red',
   value: 'red'
 },
 {
