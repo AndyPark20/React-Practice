@@ -2,24 +2,28 @@ import { useState } from 'react';
 
 
 const Accordion = ({ topics }) => {
-const [valueShow,setShow] = useState("")
+  const [valueShow, setShow] = useState("")
+  const [textShow, setText] = useState(false)
+  const [countShow, setCount] = useState(0)
 
-
-  const hide =(values) => {
-    if(valueShow === values) {
+  const hide = (values) => {
+    if (valueShow === values && !textShow) {
       return "";
-    }else {
+    } else {
       return "hidden";
     }
   }
 
-
-  const valueSet =(values) =>{
+  const valueSet = (values) => {
     setShow(values)
+    if (!textShow) {
+      setText(true)
+    } else {
+      setText(false)
+    }
   }
 
   const rendering = () => {
-
     const loop = topics.map((values, index) => {
       return (
         <div className="column" key={values.id}>
@@ -31,9 +35,26 @@ const [valueShow,setShow] = useState("")
     return loop;
   }
 
+  const counting = () => {
+    setCount(countShow + 1)
+
+
+  }
+
+  const letsCount = () => {
+    return (
+      <div className="btn">
+        <button onClick={() => counting()}>click me</button>
+        <h1>{`Count: ${countShow}`}</h1>
+      </div>
+    )
+  }
+
   return (
     <div>
       {rendering()}
+      <br />
+      {letsCount()}
     </div>
   )
 }

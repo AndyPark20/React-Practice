@@ -40,3 +40,7 @@ h3{
 .hidden{
   display:none;
 }
+
+.btn{
+  text-align:center;
+}
