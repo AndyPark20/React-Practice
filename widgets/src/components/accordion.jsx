@@ -36,10 +36,8 @@ const Accordion = ({ topics }) => {
   }
 
   const counting = () => {
-    let number = countShow;
-    number++;
-    setCount(number)
-    console.log('number',number)
+    setCount(countShow + 1)
+
 
   }
 
