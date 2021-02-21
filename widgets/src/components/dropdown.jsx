@@ -1,8 +1,30 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Dropdown = ({ options, selected, onSetChange }) => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+
+  useEffect(() => {
+    document.body.addEventListener('click', (event) => {
+      if (ref.current && ref.current.contains(event.target)) {
+        return
+      }
+      setOpen(false)
+
+    }, { capture: true })
+  },[]);
+
+
+  const toggle = () => {
+    if (open) {
+      setOpen(false)
+    } else {
+      setOpen(true)
+    }
+
+  }
 
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
@@ -16,24 +38,17 @@ const Dropdown = ({ options, selected, onSetChange }) => {
     }
   })
 
-  const toggle = () => {
-    if (open) {
-      setOpen(false)
-    } else {
-      setOpen(true)
-    }
-  }
 
   const hide = () => {
-    if (open) {
+    if (!open) {
       return ''
     } else {
       return 'visible transition'
     }
   }
-
+  console.log(ref.current)
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div onClick={() => toggle()} className="field">
         <label className="label">Select a Color</label>
         <div className="ui selection dropdown visible active">
