@@ -1,36 +1,63 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 
 
+const Accordion = ({ topics }) => {
+const [valueShow,setShow] = useState("")
 
-const Accordion = ({items}) => {
- const [stateValue, ChangeState] =useState(null);
 
-  const increment = (index) => {
-    ChangeState(index)
+  const hide =(values) => {
+    if(valueShow === values) {
+      return "";
+    }else {
+      return "hidden";
+    }
   }
 
-  const renderedItems = items.map((item,index)=>{
-    const active = index === stateValue ? 'active' : '';
-    return (
-      <React.Fragment key={item.title}>
-        <div
-        onClick = {() => increment(index)}
-         className={`title ${active}`} >
-          <i className ="dropdown icon"></i>
-          {item.title}
+
+  const valueSet =(values) =>{
+    setShow(values)
+  }
+
+  const rendering = () => {
+
+    const loop = topics.map((values, index) => {
+      return (
+        <div className="column" key={values.id}>
+          <h3 onClick={() => valueSet(values.id)}>{values.title}</h3>
+          <h4 className={hide(values.id)}>{values.information}</h4>
         </div>
-        <div className={`content ${active}`}>
-          <p>{item.content}</p>
-        </div>
-      </React.Fragment>
-    )
-  })
+      )
+    })
+    return loop;
+  }
 
   return (
-  <div className="ui styled accordion">
-    {renderedItems}
-  </div>);
+    <div>
+      {rendering()}
+    </div>
+  )
 }
 
+export default Accordion
 
-export default Accordion;
+// render() {
+//   return (
+//     <div className="container" onClick={this.handleChange}>
+//       <div className="row">
+//         {this.props.programming.map(values => {
+//           let hide = ''
+//           if (this.state.view === values.id) {
+//             hide = '';
+//           } else {
+//             hide = 'hidden';
+//           }
+//           return (<div className="column">
+//             <h3 className="cursor" key={values.id} data-view={values.id}>{values.title}</h3>
+//             <h4 className={hide}>{values.information}</h4>
+//           </div>)
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
+// }
