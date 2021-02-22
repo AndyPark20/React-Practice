@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Accordion from './components/accordion';
 import Search from './components/search';
+import Dropdown from './components/dropdown'
 
 const topics = [{
   id: 'html',
@@ -20,14 +21,32 @@ const topics = [{
   information: `JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification.
 JavaScript is high-level, often just-in-time compiled, and multi-paradigm.`
 },
-]
+];
+
+const options = [
+{
+  label:'The Color Red',
+  value: 'red'
+},
+{
+  label:'The Color Green',
+  value: 'green'
+},
+{
+  label: 'A shade of Blue',
+  value:'blue'
+}
+
+];
 
 const App = () => {
+  const [selected, setSelected] = useState(options[0])
   return (
     <div>
       <br />
       {/* <Accordion topics ={topics} /> */}
-      <Search />
+      {/* <Search /> */}
+      <Dropdown selected={selected} onSetChange={setSelected} options={options} />
     </div>
   )
 }
