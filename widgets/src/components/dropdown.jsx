@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-const Dropdown = ({ options, selected, onSetChange }) => {
+const Dropdown = ({ options, selected, onSetChange, label }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
@@ -9,7 +9,6 @@ const Dropdown = ({ options, selected, onSetChange }) => {
   useEffect(() => {
     document.body.addEventListener('click', (event) => {
       if (ref.current && ref.current.contains(event.target)) {
-        console.log('ELEMENT', open)
         return
       }
       setOpen(false)
@@ -18,7 +17,6 @@ const Dropdown = ({ options, selected, onSetChange }) => {
 
 
   const toggle = () => {
-    console.log('toggle!',open)
     if (open) {
       setOpen(false)
     } else {
@@ -50,7 +48,7 @@ const Dropdown = ({ options, selected, onSetChange }) => {
   return (
     <div ref={ref} className="ui form">
       <div onClick={() => toggle()} className="field">
-        <label className="label">Select a Color</label>
+        <label className="label">{label}</label>
         <div className="ui selection dropdown visible active">
           <i className="dropdown icon"></i>
           <div className="text">{selected.label}</div>
