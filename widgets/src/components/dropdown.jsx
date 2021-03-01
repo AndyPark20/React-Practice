@@ -7,14 +7,12 @@ const Dropdown = ({ options, selected, onSetChange }) => {
 
 
   useEffect(() => {
-    console.log('AFTER RENDER', open)
     document.body.addEventListener('click', (event) => {
       if (ref.current && ref.current.contains(event.target)) {
         console.log('ELEMENT', open)
         return
       }
       setOpen(false)
-
     }, { capture: true })
   },[]);
 

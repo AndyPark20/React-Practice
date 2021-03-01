@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Accordion from './components/accordion';
 import Search from './components/search';
-import Dropdown from './components/dropdown'
+import Dropdown from './components/dropdown';
+import Translate from './components/trasnslate';
 
 const topics = [{
   id: 'html',
@@ -41,13 +42,24 @@ const options = [
 
 const App = () => {
   const [selected, setSelected] = useState(options[0])
+  const [dropDown, setDropDown] = useState(false)
+
+  const drop =()=>{
+    if(dropDown){
+      return(
+        <div>
+          <Dropdown selected={selected} onSetChange={setSelected} options={options} />
+        </div>
+      )
+    }
+  }
+
   return (
     <div>
       <br />
-      {/* <Accordion topics ={topics} /> */}
-      {/* <Search /> */}
-      <Dropdown selected={selected} onSetChange={setSelected} options={options} />
+      <div><Translate /></div>
     </div>
+
   )
 }
 
