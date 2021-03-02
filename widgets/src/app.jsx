@@ -3,6 +3,8 @@ import Accordion from './components/accordion';
 import Search from './components/search';
 import Dropdown from './components/dropdown';
 import Translate from './components/trasnslate';
+import Todo from './components/todo';
+
 
 const topics = [{
   id: 'html',
@@ -57,7 +59,10 @@ const App = () => {
   return (
     <div>
       <br />
-      <div><Translate /></div>
+      {/* <div><Translate /></div> */}
+      <div>
+        <Todo />
+      </div>
     </div>
 
   )
