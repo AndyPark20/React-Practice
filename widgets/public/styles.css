@@ -44,3 +44,9 @@ h3{
 .btn{
   text-align:center;
 }
+
+.nothing {
+  background-color:lightgrey;
+  text-align:center;
+  border:none;
+}

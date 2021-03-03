@@ -2,15 +2,12 @@ import React, { useState,useEffect } from 'react';
 import { FormControl } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Panel from './panel';
 
 const Todo = () => {
   const [name,setName] = useState([])
   const [type, setType] = useState('')
 
-
-  useEffect(()=>{
-    console.log(name)
-  },[name])
 
   const test=(type)=>{
     setName([...name,type])
@@ -29,6 +26,9 @@ const Todo = () => {
         </div>
         <div className="col-12">
           <Button onClick={()=>{test(type)}} className="float-right w-25" variant="primary" type="submit">Submit</Button>
+        </div>
+        <div className="col-12">
+          <Panel value={name} />
         </div>
       </div>
     </div>
