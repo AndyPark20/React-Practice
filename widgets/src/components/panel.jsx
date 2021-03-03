@@ -26,7 +26,7 @@ const Panel = ({ value }) => {
   const generate =()=>{
     const rando = random.map((values,index)=>{
       return(
-        <div>
+        <div key={index}>
           <h3 className="nothing">{values}</h3>
         </div>
       )
