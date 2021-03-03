@@ -1,18 +1,20 @@
 import React, { useState,useEffect } from 'react';
 import { FormControl } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import InputGroup, { prepend, Text } from 'react-bootstrap/InputGroup';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const Todo = () => {
-  const [name,setName] = useState('')
-
-// useEffect(()=>{
-
-//   console.log(name)
-
-// },[name])
+  const [name,setName] = useState([])
+  const [type, setType] = useState('')
 
 
+  useEffect(()=>{
+    console.log(name)
+  },[name])
+
+  const test=(type)=>{
+    setName([...name,type])
+  }
 
   return (
     <div className="container">
@@ -22,11 +24,11 @@ const Todo = () => {
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">Names</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl onChange={(e)=>setName(e.target.value)} aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+            <FormControl onChange={(e)=>setType(e.target.value)} aria-label="Default" aria-describedby="inputGroup-sizing-default" />
           </InputGroup>
         </div>
         <div className="col-12">
-          <Button onClick={()=>{console.log(name)}} className="float-right w-25" variant="primary" type="submit">Submit</Button>
+          <Button onClick={()=>{test(type)}} className="float-right w-25" variant="primary" type="submit">Submit</Button>
         </div>
       </div>
     </div>
